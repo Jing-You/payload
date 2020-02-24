@@ -1,7 +1,9 @@
 **.log
 */*.log
 */*.fsdb
+ncverilog
 spyglass-1
 nWaveLog
 INCA_libs
+BSSLib.lib++
 **/novas.*
