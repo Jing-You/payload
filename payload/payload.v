@@ -3,7 +3,11 @@ module payload(
     input clk,
     input resetn,
     input enable,
+
+    // input [31:0] epoch_time, //check the time with cpu
+
     input tready,
+
     input [31:0] MsgSeqNum, 
     input [31:0] epoch_s,
     input [15:0] ms,
@@ -33,9 +37,7 @@ module payload(
     input [7:0] side,             
     input [7:0] OrdType,          
     input [7:0] TimeInForce,      
-    //input [7:0] PositionEffect,
     input [7:0] order_source,
-
     output reg [2:0] cnt,
     output reg tlast,
     output reg tvalid,
@@ -44,18 +46,13 @@ module payload(
     output reg [31:0]tkeep
 );
 
-
 wire [15:0] msg_length;  
 wire [7:0] MessageType;
 wire [15:0] hdr_fcm_id;
 wire [15:0] fcm_id;
-//wire [15:0] cm_id;
-//wire [31:0] investor_acno;
-//wire [7:0] investor_flag;
 wire [7:0] info_source2;
 wire [7:0] info_source1;
 wire [7:0] info_source0;
-//wire [7:0] order_source;
 wire [7:0] PositionEffect;
 
 /*
@@ -82,10 +79,13 @@ reg [639:0] content;
 
 assign msg_length = 16'd77;
 assign MessageType = 8'd101;
+
 assign info_source2 = 8'd57;
 assign info_source1 = 8'd57;
 assign info_source0 = 8'd57;
+//assign order_source = 8'd68;
 assign PositionEffect = 8'd79;
+
 assign hdr_fcm_id = 16'd237;
 assign fcm_id = 16'd237;
 //assign cm_id = 16'd237;
@@ -105,20 +105,31 @@ always @(posedge clk) begin
         content[31:24] <= MsgSeqNum[23:16];
         content[39:32] <= MsgSeqNum[15:8];
         content[47:40] <= MsgSeqNum[7:0];
-        content[79:48] <= epoch_s;
-        content[95:80] <= ms;
+        content[55:48] <= epoch_s[31:24];
+        content[63:56] <= epoch_s[23:16];
+        content[71:64] <= epoch_s[15:8];
+        content[79:72] <= epoch_s[7:0];
+        content[87:80] <= ms[15:8];
+        content[95:88] <= ms[7:0];
         content[103:96] <= MessageType;
-        content[119:104] <= hdr_fcm_id;
-        content[135:120] <= session_id;
+        content[111:104] <= hdr_fcm_id[15:8];
+        content[119:112] <= hdr_fcm_id[7:0];
+        content[127:120] <= session_id[15:8];
+        content[135:128] <= session_id[7:0];
         content[143:136] <= ExecType;
-        content[159:144] <= cm_id;        
-        content[175:160] <= fcm_id;
+        content[151:144] <= cm_id[15:8];
+        content[159:152] <= cm_id[7:0];        
+        content[167:160] <= fcm_id[15:8];
+        content[175:168] <= fcm_id[7:0];
         content[183:176] <= order_no4;
         content[191:184] <= order_no3;
         content[199:192] <= order_no2;
         content[207:200] <= order_no1;
         content[215:208] <= order_no0;
-        content[247:216] <= ord_id;
+        content[223:216] <= ord_id[31:24];
+        content[231:224] <= ord_id[23:16];
+        content[239:232] <= ord_id[15:8];
+        content[247:240] <= ord_id[7:0];
         content[255:248] <= user_define7;
         content[263:256] <= user_define6;
         content[271:264] <= user_define5;
@@ -128,10 +139,37 @@ always @(posedge clk) begin
         content[303:296] <= user_define1;
         content[311:304] <= user_define0;
         content[319:312] <= symbol_type;
-        content[479:320] <= sym;
-        content[511:480] <= price;
-        content[527:512] <= qty;
-        content[559:528] <= investor_acno;
+
+        content[327:320] <= sym[159:152];
+        content[335:328] <= sym[151:144];
+        content[343:336] <= sym[143:136];
+        content[351:344] <= sym[135:128];
+        content[359:352] <= sym[127:120];
+        content[367:360] <= sym[119:112];
+        content[375:368] <= sym[111:104];
+        content[383:376] <= sym[103:96];
+        content[391:384] <= sym[95:88];
+        content[399:392] <= sym[87:80];
+        content[407:400] <= sym[79:72];
+        content[415:408] <= sym[71:64];
+        content[423:416] <= sym[63:56];
+        content[431:424] <= sym[55:48];
+        content[439:432] <= sym[47:40];
+        content[447:440] <= sym[39:32];
+        content[455:448] <= sym[31:24];
+        content[463:456] <= sym[23:16];
+        content[471:464] <= sym[15:8];
+        content[479:472] <= sym[7:0];
+        content[487:480] <= price[31:24];
+        content[495:488] <= price[23:16];
+        content[503:496] <= price[15:8];
+        content[511:504] <= price[7:0];
+        content[519:512] <= qty[15:8];
+        content[527:520] <= qty[7:0];
+        content[535:528] <= investor_acno[31:24];
+        content[543:536] <= investor_acno[23:16];
+        content[551:544] <= investor_acno[15:8];
+        content[559:552] <= investor_acno[7:0];
         content[567:560] <= investor_flag;
         content[575:568] <= side;
         content[583:576] <= OrdType;
@@ -141,7 +179,6 @@ always @(posedge clk) begin
         content[615:608] <= info_source2;
         content[623:616] <= info_source1;
         content[631:624] <= info_source0;
-        //content[639:632] <= checksum[7:0];
     end
     else
     begin 
