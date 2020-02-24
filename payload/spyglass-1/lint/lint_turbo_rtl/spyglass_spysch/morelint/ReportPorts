@@ -1,0 +1,19 @@
+SCHEMA@@PName@@Dir@@Msb@@Lsb@@Desc@@DU@@DU_BBOX
+VALUE@@clk@@INPUT@@0@@0@@-@@payload@@No
+VALUE@@resetn@@INPUT@@0@@0@@-@@payload@@No
+VALUE@@epoch_time@@INPUT@@31@@0@@check the time with cpu@@payload@@No
+VALUE@@price@@INPUT@@31@@0@@-@@payload@@No
+VALUE@@quantity@@INPUT@@15@@0@@-@@payload@@No
+VALUE@@enable@@INPUT@@0@@0@@-@@payload@@No
+VALUE@@MsgSeqNum@@INPUT@@31@@0@@-@@payload@@No
+VALUE@@session_id@@INPUT@@15@@0@@-@@payload@@No
+VALUE@@ExecType@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@investor_acno@@INPUT@@31@@0@@-@@payload@@No
+VALUE@@investor_flag@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@side@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@OrdType@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@TimeInForce@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@PositionEffect@@INPUT@@7@@0@@-@@payload@@No
+VALUE@@finish@@OUTPUT@@0@@0@@-@@payload@@No
+VALUE@@cnt@@OUTPUT@@2@@0@@-@@payload@@No
+VALUE@@data@@OUTPUT@@255@@0@@-@@payload@@No

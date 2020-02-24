@@ -1,0 +1,19 @@
+Module Name,Module Type,Port Name,Direction,Width,Index,Comment Source,Comment 
+payload,Top_Level,clk,INPUT,1,-,-,-
+payload,Top_Level,resetn,INPUT,1,-,-,-
+payload,Top_Level,epoch_time,INPUT,32,[31:0],module port,check the time with cpu
+payload,Top_Level,price,INPUT,32,[31:0],-,-
+payload,Top_Level,quantity,INPUT,16,[15:0],-,-
+payload,Top_Level,enable,INPUT,1,-,-,-
+payload,Top_Level,MsgSeqNum,INPUT,32,[31:0],-,-
+payload,Top_Level,session_id,INPUT,16,[15:0],-,-
+payload,Top_Level,ExecType,INPUT,8,[7:0],-,-
+payload,Top_Level,investor_acno,INPUT,32,[31:0],-,-
+payload,Top_Level,investor_flag,INPUT,8,[7:0],-,-
+payload,Top_Level,side,INPUT,8,[7:0],-,-
+payload,Top_Level,OrdType,INPUT,8,[7:0],-,-
+payload,Top_Level,TimeInForce,INPUT,8,[7:0],-,-
+payload,Top_Level,PositionEffect,INPUT,8,[7:0],-,-
+payload,Top_Level,finish,OUTPUT,1,-,-,-
+payload,Top_Level,cnt,OUTPUT,3,[2:0],-,-
+payload,Top_Level,data,OUTPUT,256,[255:0],-,-
