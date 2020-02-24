@@ -10,7 +10,14 @@ module top_payload_generator
     input [15:0] session_id,
     input [31:0] MsgSeqNum, 
     input [31:0] epoch_s,
-    input [15:0] ms, 
+    input [15:0] ms,
+
+    input [15:0] cm_id,
+    input [31:0] investor_acno,
+	input [7:0] investor_flag,
+	input [7:0] order_source,
+
+
     input PE_enable_0,
     input [7:0] ExecType_0,
     input [7:0] user_define0_0,
@@ -28,7 +35,6 @@ module top_payload_generator
     input [7:0] side_0,             
     input [7:0] OrdType_0,          
     input [7:0] TimeInForce_0,      
-
     input PE_enable_1,
     input [7:0] ExecType_1,
     input [7:0] user_define0_1,
@@ -46,7 +52,6 @@ module top_payload_generator
     input [7:0] side_1,             
     input [7:0] OrdType_1,          
     input [7:0] TimeInForce_1,      
-
     input PE_enable_2,
     input [7:0] ExecType_2,
     input [7:0] user_define0_2,
@@ -318,7 +323,10 @@ always @* begin
 end
 
 payload payload0(
-
+    .cm_id(cm_id),
+    .investor_acno(investor_acno),
+	.investor_flag(investor_flag),
+	.order_source(order_source),
     .clk(clk),
     .resetn(resetn),
     .enable(enable_arbiter),
@@ -435,8 +443,6 @@ buffer buffer1
     .OrdType_o(OrdType_o[1]),          
     .TimeInForce_o(TimeInForce_o[1])  
 );
-
-
 
 
 buffer buffer2
@@ -558,6 +564,199 @@ buffer buffer4
     .TimeInForce_o(TimeInForce_o[4])
 );
 
+buffer buffer5
+(
+    .clk(clk),
+    .resetn(resetn),
+    .enable(PE_enable_5),
+    .ExecType_i(ExecType_5), 
+    .user_define0_i(user_define0_5),
+    .user_define1_i(user_define1_5),
+    .user_define2_i(user_define2_5),
+    .user_define3_i(user_define3_5),
+    .user_define4_i(user_define4_5),
+    .user_define5_i(user_define5_5),
+    .user_define6_i(user_define6_5),
+    .user_define7_i(user_define7_5),
+    .symbol_type_i(symbol_type_5),
+    .sym_i(sym_5),
+    .price_i(price_5),     
+    .qty_i(qty_5),  
+    .side_i(side_5),             
+    .OrdType_i(OrdType_5),          
+    .TimeInForce_i(TimeInForce_5),      
+    .ExecType_o(ExecType_o[5]), 
+    .user_define0_o(user_define0_o[5]),
+    .user_define1_o(user_define1_o[5]),
+    .user_define2_o(user_define2_o[5]),
+    .user_define3_o(user_define3_o[5]),
+    .user_define4_o(user_define4_o[5]),
+    .user_define5_o(user_define5_o[5]),
+    .user_define6_o(user_define6_o[5]),
+    .user_define7_o(user_define7_o[5]),
+    .symbol_type_o(symbol_type_o[5]),
+    .sym_o(sym_o[5]),
+    .price_o(price_o[5]),     
+    .qty_o(qty_o[5]),  
+    .side_o(side_o[5]),             
+    .OrdType_o(OrdType_o[5]),          
+    .TimeInForce_o(TimeInForce_o[5])
+);
 
+buffer buffer6
+(
+    .clk(clk),
+    .resetn(resetn),
+    .enable(PE_enable_6),
+    .ExecType_i(ExecType_6), 
+    .user_define0_i(user_define0_6),
+    .user_define1_i(user_define1_6),
+    .user_define2_i(user_define2_6),
+    .user_define3_i(user_define3_6),
+    .user_define4_i(user_define4_6),
+    .user_define5_i(user_define5_6),
+    .user_define6_i(user_define6_6),
+    .user_define7_i(user_define7_6),
+    .symbol_type_i(symbol_type_6),
+    .sym_i(sym_6),
+    .price_i(price_6),     
+    .qty_i(qty_6),  
+    .side_i(side_6),             
+    .OrdType_i(OrdType_6),          
+    .TimeInForce_i(TimeInForce_6),      
+    .ExecType_o(ExecType_o[6]), 
+    .user_define0_o(user_define0_o[6]),
+    .user_define1_o(user_define1_o[6]),
+    .user_define2_o(user_define2_o[6]),
+    .user_define3_o(user_define3_o[6]),
+    .user_define4_o(user_define4_o[6]),
+    .user_define5_o(user_define5_o[6]),
+    .user_define6_o(user_define6_o[6]),
+    .user_define7_o(user_define7_o[6]),
+    .symbol_type_o(symbol_type_o[6]),
+    .sym_o(sym_o[6]),
+    .price_o(price_o[6]),     
+    .qty_o(qty_o[6]),  
+    .side_o(side_o[6]),             
+    .OrdType_o(OrdType_o[6]),          
+    .TimeInForce_o(TimeInForce_o[6])
+);
+
+buffer buffer7
+(
+    .clk(clk),
+    .resetn(resetn),
+    .enable(PE_enable_7),
+    .ExecType_i(ExecType_7), 
+    .user_define0_i(user_define0_7),
+    .user_define1_i(user_define1_7),
+    .user_define2_i(user_define2_7),
+    .user_define3_i(user_define3_7),
+    .user_define4_i(user_define4_7),
+    .user_define5_i(user_define5_7),
+    .user_define6_i(user_define6_7),
+    .user_define7_i(user_define7_7),
+    .symbol_type_i(symbol_type_7),
+    .sym_i(sym_7),
+    .price_i(price_7),     
+    .qty_i(qty_7),  
+    .side_i(side_7),             
+    .OrdType_i(OrdType_7),          
+    .TimeInForce_i(TimeInForce_7),      
+    .ExecType_o(ExecType_o[7]), 
+    .user_define0_o(user_define0_o[7]),
+    .user_define1_o(user_define1_o[7]),
+    .user_define2_o(user_define2_o[7]),
+    .user_define3_o(user_define3_o[7]),
+    .user_define4_o(user_define4_o[7]),
+    .user_define5_o(user_define5_o[7]),
+    .user_define6_o(user_define6_o[7]),
+    .user_define7_o(user_define7_o[7]),
+    .symbol_type_o(symbol_type_o[7]),
+    .sym_o(sym_o[7]),
+    .price_o(price_o[7]),     
+    .qty_o(qty_o[7]),  
+    .side_o(side_o[7]),             
+    .OrdType_o(OrdType_o[7]),          
+    .TimeInForce_o(TimeInForce_o[7])
+);
+
+buffer buffer8
+(
+    .clk(clk),
+    .resetn(resetn),
+    .enable(PE_enable_8),
+    .ExecType_i(ExecType_8), 
+    .user_define0_i(user_define0_8),
+    .user_define1_i(user_define1_8),
+    .user_define2_i(user_define2_8),
+    .user_define3_i(user_define3_8),
+    .user_define4_i(user_define4_8),
+    .user_define5_i(user_define5_8),
+    .user_define6_i(user_define6_8),
+    .user_define7_i(user_define7_8),
+    .symbol_type_i(symbol_type_8),
+    .sym_i(sym_8),
+    .price_i(price_8),     
+    .qty_i(qty_8),  
+    .side_i(side_8),             
+    .OrdType_i(OrdType_8),          
+    .TimeInForce_i(TimeInForce_8),      
+    .ExecType_o(ExecType_o[8]), 
+    .user_define0_o(user_define0_o[8]),
+    .user_define1_o(user_define1_o[8]),
+    .user_define2_o(user_define2_o[8]),
+    .user_define3_o(user_define3_o[8]),
+    .user_define4_o(user_define4_o[8]),
+    .user_define5_o(user_define5_o[8]),
+    .user_define6_o(user_define6_o[8]),
+    .user_define7_o(user_define7_o[8]),
+    .symbol_type_o(symbol_type_o[8]),
+    .sym_o(sym_o[8]),
+    .price_o(price_o[8]),     
+    .qty_o(qty_o[8]),  
+    .side_o(side_o[8]),             
+    .OrdType_o(OrdType_o[8]),          
+    .TimeInForce_o(TimeInForce_o[8])
+);
+
+buffer buffer9
+(
+    .clk(clk),
+    .resetn(resetn),
+    .enable(PE_enable_9),
+    .ExecType_i(ExecType_9), 
+    .user_define0_i(user_define0_9),
+    .user_define1_i(user_define1_9),
+    .user_define2_i(user_define2_9),
+    .user_define3_i(user_define3_9),
+    .user_define4_i(user_define4_9),
+    .user_define5_i(user_define5_9),
+    .user_define6_i(user_define6_9),
+    .user_define7_i(user_define7_9),
+    .symbol_type_i(symbol_type_9),
+    .sym_i(sym_9),
+    .price_i(price_9),     
+    .qty_i(qty_9),  
+    .side_i(side_9),             
+    .OrdType_i(OrdType_9),          
+    .TimeInForce_i(TimeInForce_9),      
+    .ExecType_o(ExecType_o[9]), 
+    .user_define0_o(user_define0_o[9]),
+    .user_define1_o(user_define1_o[9]),
+    .user_define2_o(user_define2_o[9]),
+    .user_define3_o(user_define3_o[9]),
+    .user_define4_o(user_define4_o[9]),
+    .user_define5_o(user_define5_o[9]),
+    .user_define6_o(user_define6_o[9]),
+    .user_define7_o(user_define7_o[9]),
+    .symbol_type_o(symbol_type_o[9]),
+    .sym_o(sym_o[9]),
+    .price_o(price_o[9]),     
+    .qty_o(qty_o[9]),  
+    .side_o(side_o[9]),             
+    .OrdType_o(OrdType_o[9]),          
+    .TimeInForce_o(TimeInForce_o[9])
+);
 
 endmodule
