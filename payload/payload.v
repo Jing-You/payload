@@ -12,7 +12,7 @@ module payload(
     input [31:0] epoch_s,
     input [15:0] ms,
     input [15:0] session_id,
-    //input [15:0] cm_id,
+    input [15:0] cm_id,
     input [7:0] ExecType,
     input [7:0] order_no0,
     input [7:0] order_no1,
@@ -32,9 +32,14 @@ module payload(
     input [159:0] sym,
     input [31:0] price,     
     input [15:0] qty,  
+    input [31:0] investor_acno,   
+    input [7:0] investor_flag,    
     input [7:0] side,             
     input [7:0] OrdType,          
     input [7:0] TimeInForce,      
+    //input [7:0] PositionEffect,
+    input [7:0] order_source,
+
     output reg [2:0] cnt,
     output reg tlast,
     output reg tvalid,
@@ -48,15 +53,24 @@ wire [15:0] msg_length;
 wire [7:0] MessageType;
 wire [15:0] hdr_fcm_id;
 wire [15:0] fcm_id;
-wire [15:0] cm_id;
-wire [31:0] investor_acno;
-wire [7:0] investor_flag;
+//wire [15:0] cm_id;
+//wire [31:0] investor_acno;
+//wire [7:0] investor_flag;
 wire [7:0] info_source2;
 wire [7:0] info_source1;
 wire [7:0] info_source0;
-wire [7:0] order_source;
+//wire [7:0] order_source;
 wire [7:0] PositionEffect;
 
+/*
+reg [159:0] symbol_num;
+reg [15:0] pseq1;
+reg [15:0] pseq2;
+reg [7:0] leg_side [1:0];
+reg [7:0] comb_up;
+reg [7:0] filler [12:0];
+reg [7:0] symbol_text [19:0];
+*/
 reg [15:0] checksum;
 reg [15:0] checksum_temp0;
 reg [15:0] checksum_temp1;
@@ -76,17 +90,14 @@ assign MessageType = 8'd101;
 assign info_source2 = 8'd57;
 assign info_source1 = 8'd57;
 assign info_source0 = 8'd57;
-assign order_source = 8'd68;
+//assign order_source = 8'd68;
 assign PositionEffect = 8'd79;
+
 assign hdr_fcm_id = 16'd237;
 assign fcm_id = 16'd237;
-assign cm_id = 16'd237;
-assign investor_flag = 8'd50;
-assign investor_acno = 32'd0;
-
-// always @* begin
-//     $display("%d %d %d", cm_id, investor_flag, investor_acno);
-// end
+//assign cm_id = 16'd237;
+//assign investor_flag = 8'd2;
+//assign investor_acno = 32'd0;
 
 always @(posedge clk) begin 
     if(~resetn) 
@@ -102,8 +113,8 @@ always @(posedge clk) begin
         content[103:96] <= MessageType;
         content[119:104] <= hdr_fcm_id;
         content[135:120] <= session_id;
-        content[151:136] <= cm_id;
-        content[159:152] <= ExecType;
+        content[143:136] <= ExecType;
+        content[159:144] <= cm_id;        
         content[175:160] <= fcm_id;
         content[183:176] <= order_no4;
         content[191:184] <= order_no3;
