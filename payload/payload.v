@@ -101,7 +101,10 @@ always @(posedge clk) begin
     begin
         content[7:0] <= msg_length[15:8];
         content[15:8] <= msg_length[7:0];
-        content[47:16] <= MsgSeqNum;
+        content[23:16] <= MsgSeqNum[31:24];
+        content[31:24] <= MsgSeqNum[23:16];
+        content[39:32] <= MsgSeqNum[15:8];
+        content[47:40] <= MsgSeqNum[7:0];
         content[79:48] <= epoch_s;
         content[95:80] <= ms;
         content[103:96] <= MessageType;

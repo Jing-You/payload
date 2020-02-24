@@ -192,6 +192,12 @@ wire [255:0]data;
 wire [31:0]tstrb;
 wire [31:0]tkeep;
 
+always @(posedge clk) begin
+    if (tlast) begin
+        $display("%h", top_payload_generator0.payload0.content);
+        $display("--------------------");
+    end
+end
 
 top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
 (

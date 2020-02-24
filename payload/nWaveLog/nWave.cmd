@@ -503,3 +503,9 @@ wvSetPosition -win $_nWave1 {("G2" 19)}
 wvCollapseBus -win $_nWave1 {("G2" 19)}
 wvSetPosition -win $_nWave1 {("G2" 19)}
 wvSetPosition -win $_nWave1 {("G2" 58)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
