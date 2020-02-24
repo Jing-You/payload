@@ -110,6 +110,8 @@ FSM = 1
 Branch = 1
 [DesignTree]
 IfShowModule = {TRUE, FALSE}
+[DisabledMessages]
+version = Verdi_N-2017.12
 [Editor]
 editorName = TurboEditor
 [Emacs]
@@ -197,7 +199,8 @@ StickSet-TextColor = black
 [FSM_Dlg-Print]
 Orientation = Landscape
 [FileBrowser]
-nWaveOpenFsdbDirHistory = "\"/home/u105/u105061255/yuanta/payload/test_payload_arbiter.fsdb\"" "\"/home/u105/u105061255/yuanta/payload/test_payload.fsdb\"" "\"/home/u105/u105061255/yuanta/payload/test_payload_generator.fsdb\""
+nWaveOpenFsdbDirHistory = "\"/home/u105/u105061255/yuanta/payload/test_payload_arbiter.fsdb\"" "\"/home/u105/u105061255/yuanta/payload/test_payload.fsdb\"" "\"/home/u105/u105061255/yuanta/payload/test_payload_generator.fsdb\"" "\"/home/u105/u105061255/yuanta/payload/test_payload_ge\
+nerator2.fsdb\""
 [Form]
 version = Verdi_N-2017.12
 [General]
@@ -305,7 +308,8 @@ FileName = test.ps
 PaperSize = A4 - 210x297 (mm)
 ColorPrint = FALSE
 [QtDialog]
-openFileDlg = 202,107,602,483
+QwUserAskDlg = 559,312,324,137
+openFileDlg = 344,161,602,483
 QwWarnMsgDlg = 458,267,600,250
 qWaveSignalDialog = 331,204,800,479
 [Session Cache]
@@ -519,7 +523,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 331 204 800 479 219 381 527 183
-viewPort = 0 23 1462 841 190 389
+viewPort = 0 23 1462 841 190 564
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -780,9 +784,10 @@ curveWindow_Drag&Drop_Mode = TRUE
 hspiceIncOpenMode = TRUE
 pcSelectMode = TRUE
 hierarchyDelimiter = /
-RecentFile1 = "\"/home/u105/u105061255/yuanta/payload/test_payload_generator.fsdb\""
-RecentFile2 = "\"/home/u105/u105061255/yuanta/payload/test_payload.fsdb\""
-RecentFile3 = "\"/home/u105/u105061255/yuanta/payload/test_payload_arbiter.fsdb\""
+RecentFile1 = "\"/home/u105/u105061255/yuanta/payload/test_payload_generator2.fsdb\""
+RecentFile2 = "\"/home/u105/u105061255/yuanta/payload/test_payload_generator.fsdb\""
+RecentFile3 = "\"/home/u105/u105061255/yuanta/payload/test_payload.fsdb\""
+RecentFile4 = "\"/home/u105/u105061255/yuanta/payload/test_payload_arbiter.fsdb\""
 open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto

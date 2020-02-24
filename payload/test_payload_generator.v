@@ -1,13 +1,10 @@
-module test_top;
+module test_payload_generator;
 
 parameter CYCLE = 10, NUM_PE=10;
-
-
 
 // create clk
 reg clk;
 reg resetn;
-
 reg [15:0] session_id;
 reg [31:0] MsgSeqNum; 
 reg [31:0] epoch_s;
@@ -29,7 +26,6 @@ reg [15:0] qty_0;
 reg [7:0] side_0;             
 reg [7:0] OrdType_0;          
 reg [7:0] TimeInForce_0;
-
 reg PE_enable_1;
 reg [7:0] ExecType_1;
 reg [7:0] user_define0_1;
@@ -47,7 +43,6 @@ reg [15:0] qty_1;
 reg [7:0] side_1;             
 reg [7:0] OrdType_1;          
 reg [7:0] TimeInForce_1;
-
 
 reg PE_enable_2;
 reg [7:0] ExecType_2;
@@ -67,7 +62,6 @@ reg [7:0] side_2;
 reg [7:0] OrdType_2;          
 reg [7:0] TimeInForce_2;
 
-
 reg PE_enable_3;
 reg [7:0] ExecType_3;
 reg [7:0] user_define0_3;
@@ -85,7 +79,6 @@ reg [15:0] qty_3;
 reg [7:0] side_3;             
 reg [7:0] OrdType_3;          
 reg [7:0] TimeInForce_3;
-
 reg PE_enable_4;
 reg [7:0] ExecType_4;
 reg [7:0] user_define0_4;
@@ -102,8 +95,7 @@ reg [31:0] price_4;
 reg [15:0] qty_4;  
 reg [7:0] side_4;             
 reg [7:0] OrdType_4;          
-reg [7:0] TimeInForce_4; 
-
+reg [7:0] TimeInForce_4;
 
 reg PE_enable_5;
 reg [7:0] ExecType_5;
@@ -121,8 +113,7 @@ reg [31:0] price_5;
 reg [15:0] qty_5;  
 reg [7:0] side_5;             
 reg [7:0] OrdType_5;          
-reg [7:0] TimeInForce_5;      
-    
+reg [7:0] TimeInForce_5;    
 
 reg PE_enable_6;
 reg [7:0] ExecType_6;
@@ -140,8 +131,7 @@ reg [31:0] price_6;
 reg [15:0] qty_6;  
 reg [7:0] side_6;             
 reg [7:0] OrdType_6;          
-reg [7:0] TimeInForce_6;      
-    
+reg [7:0] TimeInForce_6;    
 reg PE_enable_7;
 
 reg [7:0] ExecType_7;
@@ -159,8 +149,7 @@ reg [31:0] price_7;
 reg [15:0] qty_7;  
 reg [7:0] side_7;             
 reg [7:0] OrdType_7;          
-reg [7:0] TimeInForce_7;      
-    
+reg [7:0] TimeInForce_7;    
 reg PE_enable_8;
 
 reg [7:0] ExecType_8;
@@ -178,8 +167,7 @@ reg [31:0] price_8;
 reg [15:0] qty_8;  
 reg [7:0] side_8;             
 reg [7:0] OrdType_8;          
-reg [7:0] TimeInForce_8;      
-    
+reg [7:0] TimeInForce_8;    
 reg PE_enable_9;
 reg [7:0] ExecType_9;
 reg [7:0] user_define0_9;
@@ -196,8 +184,7 @@ reg [31:0] price_9;
 reg [15:0] qty_9;  
 reg [7:0] side_9;             
 reg [7:0] OrdType_9;          
-reg [7:0] TimeInForce_9;
-wire [NUM_PE-1:0] PE_acks;
+reg [7:0] TimeInForce_9;wire [NUM_PE-1:0] PE_acks;
 wire tready;
 wire tlast;
 wire tvalid;
@@ -208,13 +195,20 @@ wire [31:0]tkeep;
 
 top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
 (
-	.clk(clk),
+
+
+    .cm_id(16'h00ed),
+    .investor_acno(32'h0),
+    .investor_flag(8'h32),
+    .order_source(8'h47),
+    .clk(clk),
     .resetn(resetn),
     .tready(tready),
     .session_id(session_id),
     .MsgSeqNum(MsgSeqNum), 
     .epoch_s(epoch_s),
-    .ms(ms), 
+    .ms(ms),
+
     .PE_enable_0(PE_enable_0),
     .ExecType_0(ExecType_0),
     .user_define0_0(user_define0_0),
@@ -231,27 +225,23 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_0(qty_0),  
     .side_0(side_0),             
     .OrdType_0(OrdType_0),          
-    .TimeInForce_0(TimeInForce_0),      
-    
-
-    .PE_enable_1(PE_enable_1),
-    .ExecType_1(ExecType_1),
-    .user_define0_1(user_define0_1),
-    .user_define1_1(user_define1_1),
-    .user_define2_1(user_define2_1),
-    .user_define3_1(user_define3_1),
-    .user_define4_1(user_define4_1),
-    .user_define5_1(user_define5_1),
-    .user_define6_1(user_define6_1),
-    .user_define7_1(user_define7_1),
-    .symbol_type_1(symbol_type_1),
-    .sym_1(sym_1),
-    .price_1(price_1),     
-    .qty_1(qty_1),  
-    .side_1(side_1),             
-    .OrdType_1(OrdType_1),          
-    .TimeInForce_1(TimeInForce_1),      
-    
+    .TimeInForce_0(TimeInForce_0),    .PE_enable_1(PE_enable_1),
+    .ExecType_1(8'h4d),
+    .user_define0_1(8'h30),
+    .user_define1_1(8'h31),
+    .user_define2_1(8'h32),
+    .user_define3_1(8'h30),
+    .user_define4_1(8'h2f),
+    .user_define5_1(8'h0),
+    .user_define6_1(8'h0),
+    .user_define7_1(8'h0),
+    .symbol_type_1(8'h02),
+    .sym_1(160'h4d58344230000000dc854c0000000000700701b0),
+    .price_1(32'h0011c600),     
+    .qty_1(16'h0),  
+    .side_1(8'h02),             
+    .OrdType_1(8'h02),          
+    .TimeInForce_1(8'h0),    
     .PE_enable_2(PE_enable_2),
     .ExecType_2(ExecType_2),
     .user_define0_2(user_define0_2),
@@ -268,8 +258,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_2(qty_2),  
     .side_2(side_2),             
     .OrdType_2(OrdType_2),          
-    .TimeInForce_2(TimeInForce_2),      
-    
+    .TimeInForce_2(TimeInForce_2),    
 
     .PE_enable_3(PE_enable_3),
     .ExecType_3(ExecType_3),
@@ -287,8 +276,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_3(qty_3),  
     .side_3(side_3),             
     .OrdType_3(OrdType_3),          
-    .TimeInForce_3(TimeInForce_3),      
-    
+    .TimeInForce_3(TimeInForce_3),    
 
     .PE_enable_4(PE_enable_4),
     .ExecType_4(ExecType_4),
@@ -306,8 +294,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_4(qty_4),  
     .side_4(side_4),             
     .OrdType_4(OrdType_4),          
-    .TimeInForce_4(TimeInForce_4),      
-    
+    .TimeInForce_4(TimeInForce_4),    
 
     .PE_enable_5(PE_enable_5),
     .ExecType_5(ExecType_5),
@@ -325,8 +312,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_5(qty_5),  
     .side_5(side_5),             
     .OrdType_5(OrdType_5),          
-    .TimeInForce_5(TimeInForce_5),      
-    
+    .TimeInForce_5(TimeInForce_5),    
 
     .PE_enable_6(PE_enable_6),
     .ExecType_6(ExecType_6),
@@ -344,8 +330,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_6(qty_6),  
     .side_6(side_6),             
     .OrdType_6(OrdType_6),          
-    .TimeInForce_6(TimeInForce_6),      
-    
+    .TimeInForce_6(TimeInForce_6),    
     .PE_enable_7(PE_enable_7),
 
     .ExecType_7(ExecType_7),
@@ -363,8 +348,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_7(qty_7),  
     .side_7(side_7),             
     .OrdType_7(OrdType_7),          
-    .TimeInForce_7(TimeInForce_7),      
-    
+    .TimeInForce_7(TimeInForce_7),    
     .PE_enable_8(PE_enable_8),
 
     .ExecType_8(ExecType_8),
@@ -382,8 +366,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_8(qty_8),  
     .side_8(side_8),             
     .OrdType_8(OrdType_8),          
-    .TimeInForce_8(TimeInForce_8),      
-    
+    .TimeInForce_8(TimeInForce_8),    
 
     .PE_enable_9(PE_enable_9),
     .ExecType_9(ExecType_9),
@@ -401,8 +384,7 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .qty_9(qty_9),  
     .side_9(side_9),             
     .OrdType_9(OrdType_9),          
-    .TimeInForce_9(TimeInForce_9),   
-    .PE_acks(PE_acks),   
+    .TimeInForce_9(TimeInForce_9),    .PE_acks(PE_acks),   
     .tlast(tlast),
     .tvalid(tvalid),
     .data(data), 

@@ -3,7 +3,6 @@ module top_payload_generator
     parameter NUM_PE = 10
 )
 (
-
     input clk,
     input resetn,
     input tready,
@@ -11,13 +10,10 @@ module top_payload_generator
     input [31:0] MsgSeqNum, 
     input [31:0] epoch_s,
     input [15:0] ms,
-
     input [15:0] cm_id,
     input [31:0] investor_acno,
-	input [7:0] investor_flag,
-	input [7:0] order_source,
-
-
+    input [7:0] investor_flag,
+    input [7:0] order_source,
     input PE_enable_0,
     input [7:0] ExecType_0,
     input [7:0] user_define0_0,
@@ -244,12 +240,12 @@ wire [7:0] current;
 
 payload_arbiter #(.NUM_PE(NUM_PE)) payload_arbiter0
 (
-	.clk(clk),
-	.rst_n(resetn),
-	.enables(enables),
-	.last(tlast),
-	.current(current),
-	.enable_arbiter(enable_arbiter)
+    .clk(clk),
+    .rst_n(resetn),
+    .enables(enables),
+    .last(tlast),
+    .current(current),
+    .enable_arbiter(enable_arbiter)
 );
 
 always @* begin
@@ -325,8 +321,8 @@ end
 payload payload0(
     .cm_id(cm_id),
     .investor_acno(investor_acno),
-	.investor_flag(investor_flag),
-	.order_source(order_source),
+    .investor_flag(investor_flag),
+    .order_source(order_source),
     .clk(clk),
     .resetn(resetn),
     .enable(enable_arbiter),

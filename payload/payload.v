@@ -3,11 +3,7 @@ module payload(
     input clk,
     input resetn,
     input enable,
-
-    // input [31:0] epoch_time, //check the time with cpu
-
     input tready,
-
     input [31:0] MsgSeqNum, 
     input [31:0] epoch_s,
     input [15:0] ms,
