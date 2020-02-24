@@ -318,10 +318,6 @@ always @* begin
     c_TimeInForce = TimeInForce_o[current];
 end
 
-always @* begin
-    $display("%d %d %d", cm_id, investor_acno, investor_flag);
-end
-
 payload payload0(
     .cm_id(cm_id),
     .investor_acno(investor_acno),
@@ -336,12 +332,12 @@ payload payload0(
     .ms(ms),
     .session_id(session_id),
     .ExecType(c_ExecType),
-    .order_no0(8'h57),
-    .order_no1(8'h41),
-    .order_no2(8'h41),
-    .order_no3(8'h55),
-    .order_no4(8'h65),
-    .ord_id(32'h18),                    //////////////#####
+    .order_no0(order_no_0),
+    .order_no1(order_no_1),
+    .order_no2(order_no_2),
+    .order_no3(order_no_3),
+    .order_no4(order_no_4),
+    .ord_id(ord_id),
     .user_define0(c_user_define0),
     .user_define1(c_user_define1),
     .user_define2(c_user_define2),
