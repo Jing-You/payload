@@ -1,6 +1,6 @@
 */*.log
 */*.fsdb
-/spyglass-1/*
-/nWaveLog/*
-/INCA_libs/*
-/novas.*
+spyglass-1
+nWaveLog
+INCA_libs
+novas
