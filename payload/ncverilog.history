@@ -1,2 +1,0 @@
-s1(24Feb2020:16:50:39):  ncverilog -f test_payload_generator.f 
-s2(24Feb2020:16:52:51):  ncverilog -f test_payload_generator.f 
