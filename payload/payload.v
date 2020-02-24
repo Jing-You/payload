@@ -82,13 +82,10 @@ reg [639:0] content;
 
 assign msg_length = 16'd77;
 assign MessageType = 8'd101;
-
 assign info_source2 = 8'd57;
 assign info_source1 = 8'd57;
 assign info_source0 = 8'd57;
-//assign order_source = 8'd68;
 assign PositionEffect = 8'd79;
-
 assign hdr_fcm_id = 16'd237;
 assign fcm_id = 16'd237;
 //assign cm_id = 16'd237;
@@ -102,7 +99,8 @@ always @(posedge clk) begin
     end 
     else if (enable)
     begin
-        content[15:0] <= msg_length;
+        content[7:0] <= msg_length[15:8];
+        content[15:8] <= msg_length[7:0];
         content[47:16] <= MsgSeqNum;
         content[79:48] <= epoch_s;
         content[95:80] <= ms;

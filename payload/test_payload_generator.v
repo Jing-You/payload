@@ -204,10 +204,10 @@ top_payload_generator #(.NUM_PE(NUM_PE)) top_payload_generator0
     .clk(clk),
     .resetn(resetn),
     .tready(tready),
-    .session_id(session_id),
-    .MsgSeqNum(MsgSeqNum), 
-    .epoch_s(epoch_s),
-    .ms(ms),
+    .session_id(16'h00df),
+    .MsgSeqNum(32'h0b23), 
+    .epoch_s(32'h5e4c9098),
+    .ms(16'h0096),
 
     .PE_enable_0(PE_enable_0),
     .ExecType_0(ExecType_0),
@@ -503,7 +503,7 @@ end
 always #(CYCLE/2) clk=~clk;
 
 initial begin
-   $fsdbDumpfile("test_payload_generator2.fsdb");
+   $fsdbDumpfile("test_payload_generator.fsdb");
    $fsdbDumpvars("+mda");
    $fsdbDumpvars;
 end
